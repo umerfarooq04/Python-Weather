@@ -1,5 +1,5 @@
-# app.py
 from weather import get_weather_by_coordinates
+from utils import weather_code_to_emoji
 
 def main():
     print("🌦 Welcome to the Weather App (Coordinate-Based) 🌍")
@@ -8,8 +8,9 @@ def main():
 
     weather = get_weather_by_coordinates(lat, lon)
     if weather:
-        print(f"Current temperature: {weather['temperature']}°C")
-        print(f"Wind speed: {weather['windspeed']} km/h")
+        emoji = weather_code_to_emoji(weather['weathercode'])
+        print(f"{emoji} Current temperature: {weather['temperature']}°C")
+        print(f"💨 Wind speed: {weather['windspeed']} km/h")
         print(f"Weather code: {weather['weathercode']}")
     else:
         print("Weather data not available.")
