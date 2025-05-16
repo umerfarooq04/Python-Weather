@@ -3,6 +3,41 @@
 <head>
     <meta charset="UTF-8" />
     <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f0f4f8;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 320px;
+            white-space: pre-line; /* preserve newlines */
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        form input {
+            padding: 8px;
+            margin: 5px 0;
+            width: 200px;
+            font-size: 1rem;
+        }
+        form button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>🌦 Weather App</h1>
@@ -12,11 +47,10 @@
         <button type="submit">Get Weather</button>
     </form>
 
-    {% if weather %}
-        <h2>Weather Result:</h2>
-        <p>{{ emoji }} Temperature: {{ weather.temperature }}°C</p>
-        <p>💨 Wind Speed: {{ weather.windspeed }} km/h</p>
-        <p>Weather Code: {{ weather.weathercode }}</p>
+    {% if weather_text %}
+        <div class="card">
+            {{ weather_text }}
+        </div>
     {% endif %}
 </body>
 </html>
