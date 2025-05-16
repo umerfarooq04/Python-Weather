@@ -1,10 +1,12 @@
+# util.py
 import requests
-from config import API_KEY, BASE_URL
 
-def get_weather(city, metric=True):
-    units = 'metric' if metric else 'imperial'
-    params = {'q': city, 'appid': API_KEY, 'units': units}
-    response = requests.get(BASE_URL, params=params)
+def get_weather_by_coordinates(lat, lon):
+    url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true"
+    response = requests.get(url)
     if response.status_code == 200:
-        return response.json()
-    return None
+        data = response.json()
+        return data.get('current_weather', None)
+    else:
+        print(f"[HTTP ERROR] {response.status_code} - {response.reason}")
+        return None
