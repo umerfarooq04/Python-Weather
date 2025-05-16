@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>🌦 Weather App</h1>
+    <form method="POST">
+        <label>Latitude: <input type="text" name="latitude" required></label><br>
+        <label>Longitude: <input type="text" name="longitude" required></label><br>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <h2>Weather Result:</h2>
+        <p>{{ emoji }} Temperature: {{ weather.temperature }}°C</p>
+        <p>💨 Wind Speed: {{ weather.windspeed }} km/h</p>
+        <p>Weather Code: {{ weather.weathercode }}</p>
+    {% endif %}
+</body>
+</html>
